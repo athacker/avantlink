@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {HttpService} from '../../../core-module/services/http.service';
-import {MatDialog, MatSnackBar, MatSnackBarConfig} from '@angular/material';
+import {MatDialog, MatSnackBar, MatSnackBarConfig, MatSort, MatTableDataSource} from '@angular/material';
 import {TaskComponent} from '../task/task.component';
 
 
@@ -12,16 +12,19 @@ import {TaskComponent} from '../task/task.component';
 })
 export class TaskListComponent implements OnInit {
 
+  @ViewChild(MatSort) sort: MatSort;
   tableColumns: string[] = ['task_name', 'task_id' ];
-  dataSource = [];
+  dataSource: MatTableDataSource<any>;
 
   constructor(private route: ActivatedRoute, public dialog: MatDialog, public snackBar: MatSnackBar, private httpService: HttpService) {
   }
 
   ngOnInit() {
+
     if (this.route.data) {
       this.route.data.subscribe(({data}) => {
-        this.dataSource = data.data;
+        this.dataSource = new MatTableDataSource(data.data);
+        this.dataSource.sort =  this.sort;
       }, ({error}) => {
           console.log('An Exception was caught setting up material data table source. ' + error);
       });

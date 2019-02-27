@@ -4,8 +4,11 @@
 }
 
 table {
-  width: 100%;
+  width:70%;
+  margin-left:25%;
+  margin-right:15%;
 }
+
 
 .mat-header-row {
   margin-top: 10px;
@@ -20,6 +23,13 @@ table {
 
 .mat-row {
   background-color: white;
+}
+.mat-cell_task {
+  text-align: left;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
 }
 
 .title_bar{
