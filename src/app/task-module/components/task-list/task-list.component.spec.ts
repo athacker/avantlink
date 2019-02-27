@@ -4,9 +4,8 @@ import {MAT_DIALOG_DATA, MatDialog} from '@angular/material';
 import {MaterialModule} from '../../../material-module/material.module';
 import {ActivatedRoute, convertToParamMap} from '@angular/router';
 import {HttpService} from '../../../core-module/services/http.service';
-import {Observable} from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
-import {AppComponent} from '../../../app.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 export class ActivatedRouteMock {
@@ -16,7 +15,6 @@ export class ActivatedRouteMock {
 }
 
 class MockHttpService {
-
 }
 
 
@@ -31,7 +29,7 @@ describe('Task List Component', () => {
         {provide: ActivatedRoute, useClass: ActivatedRouteMock},
         {provide: HttpService, useClass: MockHttpService}
       ],
-      imports: [MaterialModule]
+      imports: [MaterialModule, BrowserAnimationsModule]
     })
       .compileComponents();
   }));
