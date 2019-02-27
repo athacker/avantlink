@@ -51,7 +51,7 @@ describe('Task List Component', () => {
   it(`should have table columns!!`, async(() => {
     const fixture = TestBed.createComponent(TaskListComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.tableColumns).toEqual(['task_id', 'task_name']);
+    expect(app.tableColumns).toEqual(['task_name', 'task_id']);
   }));
 
 

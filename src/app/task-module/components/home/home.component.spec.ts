@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HomeComponent } from './home.component';
 import { RouterTestingModule} from '@angular/router/testing';
 import {Component, NgModule} from '@angular/core';
+import {HeaderComponent} from '../header/header.component';
 
 
 
@@ -24,7 +25,7 @@ describe('Home Component', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomeComponent ],
+      declarations: [ HomeComponent, HeaderComponent  ],
       providers: [],
       imports: [
         MockModule,
