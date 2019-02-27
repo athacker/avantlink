@@ -12,4 +12,9 @@ describe('auth-module -> Authguard Service Unit testing', () => {
   it('Auth Guard service should be created', inject([AuthguardService], (service: AuthguardService) => {
     expect(service).toBeTruthy();
   }));
+
+
+  it('Auth Guard should return true', inject([AuthguardService], (service: AuthguardService) => {
+    expect(service.canActivate()).toBeTruthy();
+  }));
 });
