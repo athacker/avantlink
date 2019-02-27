@@ -1,0 +1,36 @@
+.example-container {
+  height: 400px;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-header-row {
+  background-color: #3667AE;
+}
+
+.mat-header-cell {
+  color: white !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;;
+}
+
+.mat-row {
+  background-color: white;
+}
+
+.title_bar{
+  background-color: #27508D;
+}
+.banner{
+  background-color: #3667AE;
+}
+
+.fa-trash:hover {
+  color: red
+}
+.fa-pencil:hover {
+  color: green;
+}

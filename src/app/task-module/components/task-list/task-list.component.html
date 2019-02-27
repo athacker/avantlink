@@ -1,0 +1,46 @@
+<div class="jumbotron text-center py-3 mb-0">
+    <div class="container-fluid">
+
+      <div class="col-lg-12">
+
+
+
+        <div class="col-lg-4"></div>
+
+
+        <div class="col-lg-8">
+          <span><h1 class="jumbotron-heading">My Tasks</h1>  <button (click)="add()"> Add New Task</button></span>
+
+            <mat-table [dataSource]="dataSource">
+
+              <ng-container  matColumnDef="task_id">
+                <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+                <mat-cell *matCellDef="let task">
+
+                  <span matTooltip="Edit  {{task.task_name}}"> <i class="fa fa-pencil" (click)="edit( task )"   > </i></span>
+                  <span matTooltip="Delete {{task.task_name}}"> <i class="fa fa-trash"  (click)="delete(task.task_id)"  ></i></span>
+
+                </mat-cell>
+              </ng-container>
+
+              <ng-container  matColumnDef="task_name">
+                <mat-header-cell *matHeaderCellDef>Task Name</mat-header-cell>
+                <mat-cell *matCellDef="let task">{{task.task_name}}</mat-cell>
+              </ng-container>
+
+              <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
+
+              <mat-row *matRowDef="let row; columns: tableColumns"></mat-row>
+
+
+            </mat-table>
+
+        </div>
+
+      </div>
+
+    </div>
+</div>
+
+
+

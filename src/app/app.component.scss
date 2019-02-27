@@ -1,0 +1,59 @@
+$backColor: brown;
+
+.search-button {
+  border-color: #27508D;
+  color: #27508D;
+
+  &:hover, &:after, &:focus {
+    background-color: transparent;
+    color: $backColor;
+  }
+}
+.brand-custom {
+  &:hover, &:focus, &:active {
+    background-color: transparent;
+    color:$backColor;
+  }
+}
+
+.login-custom {
+  &:hover, &:focus, &:active {
+    background-color: transparent;
+    color:$backColor !important;
+  }
+}
+
+.register-custom {
+  &:hover, &:focus, &:active {
+    background-color: transparent;
+    color:$backColor !important;
+  }
+}
+
+.nav{
+  background-color: #156bb4;
+  border-color: #156bb4;
+}
+
+
+
+::ng-deep snack-bar-container.custom-class-err {
+  background: #E14E51;
+  color: white;
+  content: "\f05a";
+}
+
+::ng-deep snack-bar-container.custom-class-success{
+  background: #34C37A;
+  color: white;
+}
+
+::ng-deep snack-bar-container.custom-class-cancel{
+  background: burlywood;
+  color: white;
+
+}
+
+::ng-deep .custom-class .mat-simple-snackbar.custom-class {
+  color: #34C37A;
+}

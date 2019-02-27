@@ -1,0 +1,45 @@
+
+
+<div mat-dialog-title class="banner">
+  <div> {{mode}}</div>
+</div>
+
+
+
+<mat-dialog-content>
+
+      <form [formGroup]="frmGroup">
+        <label for="task_name">Task Name</label><br/>
+        <input type="text" id="task_name" name="task_name" size="40"
+               formControlName="taskNameControl"
+               [ngClass]="{
+                'is-invalid': taskNameControl.invalid && taskNameControl.dirty
+                }"
+               placeholder="Enter Task Description"/>
+        </form>
+
+
+</mat-dialog-content>
+
+
+
+<mat-dialog-actions>
+
+
+  <div class="action_buttons">
+
+
+       <button id="cancel" class="modal_btn"[mat-dialog-close]="false">Cancel</button>
+
+
+        <button id="update" class="modal_btn" [disabled]="frmGroup.invalid"
+          [ngClass]="{
+              'btn_valid': taskNameControl.valid && taskNameControl.dirty
+               }"
+          [mat-dialog-close]="true"
+          (click)="save()">Update</button>
+  </div>
+</mat-dialog-actions>
+
+
+
