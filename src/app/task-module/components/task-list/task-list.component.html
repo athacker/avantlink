@@ -3,15 +3,21 @@
 
       <div class="col-lg-12">
 
+        <div class="col-lg-10">
 
 
-        <div class="col-lg-4"></div>
+         <h1 class="jumbotron-heading">My Tasks</h1>  <button class="btn btn-outline-success" (click)="add()"> Add New Task</button>
 
 
-        <div class="col-lg-8">
-          <span><h1 class="jumbotron-heading">My Tasks</h1>  <button (click)="add()"> Add New Task</button></span>
 
             <mat-table [dataSource]="dataSource">
+
+              <ng-container  matColumnDef="task_name">
+                <mat-header-cell *matHeaderCellDef>Task Name</mat-header-cell>
+                <mat-cell *matCellDef="let task">{{task.task_name}}</mat-cell>
+              </ng-container>
+
+
 
               <ng-container  matColumnDef="task_id">
                 <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
@@ -23,10 +29,6 @@
                 </mat-cell>
               </ng-container>
 
-              <ng-container  matColumnDef="task_name">
-                <mat-header-cell *matHeaderCellDef>Task Name</mat-header-cell>
-                <mat-cell *matCellDef="let task">{{task.task_name}}</mat-cell>
-              </ng-container>
 
               <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
 

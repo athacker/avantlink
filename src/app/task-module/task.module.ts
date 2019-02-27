@@ -7,6 +7,7 @@ import {TaskComponent} from './components/task/task.component';
 import {TaskResolverService} from './services/task-resolver.service';
 import {TaskListComponent} from './components/task-list/task-list.component';
 import {MaterialModule} from '../material-module/material.module';
+import {HeaderComponent} from './components/header/header.component';
 
 
 @NgModule({
@@ -17,7 +18,7 @@ import {MaterialModule} from '../material-module/material.module';
     ReactiveFormsModule,
     TaskRoutingModule
   ],
-  declarations: [HomeComponent, TaskListComponent, TaskComponent],
+  declarations: [HomeComponent, HeaderComponent, TaskListComponent, TaskComponent],
   providers: [TaskResolverService]
 })
 export class TaskModule { }

@@ -12,7 +12,7 @@ import {TaskComponent} from '../task/task.component';
 })
 export class TaskListComponent implements OnInit {
 
-  tableColumns: string[] = ['task_id', 'task_name'];
+  tableColumns: string[] = ['task_name', 'task_id' ];
   dataSource = [];
 
   constructor(private route: ActivatedRoute, public dialog: MatDialog, public snackBar: MatSnackBar, private httpService: HttpService) {
