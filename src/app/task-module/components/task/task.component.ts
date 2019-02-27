@@ -58,14 +58,18 @@ export class TaskComponent implements OnInit {
   save() {
     const body = {
       'name': this.taskNameControl.value
-    }
+    };
     if (!this.taskId) {
       this.httpService.httpPost('tasks', body).subscribe((response) => {
         console.log(response);
+      }, (error) => {
+        console.log('Exception was caught creating a new task.');
       });
     } else {
       this.httpService.httpPut('tasks', this.taskIdControl.value, body).subscribe((response) => {
         console.log(response);
+      }, (error) => {
+        console.log('Exception was caught updating an existing task.');
       });
     }
   }
