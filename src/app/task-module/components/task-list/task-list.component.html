@@ -39,8 +39,15 @@
 
             </mat-table>
 
-        </div>
 
+          <mat-paginator [length]="100"
+                         [pageSize]="DEFAULT_PAGE_SIZE"
+                         [pageSizeOptions]="[5, 10, 25, 100]">
+          </mat-paginator>
+
+
+
+        </div>
 
       </div>
 

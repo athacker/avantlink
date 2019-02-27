@@ -1,8 +1,9 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {HttpService} from '../../../core-module/services/http.service';
-import {MatDialog, MatSnackBar, MatSnackBarConfig, MatSort, MatTableDataSource} from '@angular/material';
+import {MatDialog, MatPaginator, MatSnackBar, MatSnackBarConfig, MatSort, MatTableDataSource} from '@angular/material';
 import {TaskComponent} from '../task/task.component';
+import {tap} from 'rxjs/operators';
 
 
 @Component({
@@ -13,20 +14,25 @@ import {TaskComponent} from '../task/task.component';
 export class TaskListComponent implements OnInit {
 
   @ViewChild(MatSort) sort: MatSort;
-  tableColumns: string[] = ['task_name', 'task_id' ];
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  tableColumns: string[] = ['task_name', 'task_id'];
   dataSource: MatTableDataSource<any>;
+
+  DEFAULT_PAGE_SIZE = 5;
 
   constructor(private route: ActivatedRoute, public dialog: MatDialog, public snackBar: MatSnackBar, private httpService: HttpService) {
   }
 
   ngOnInit() {
+    this.paginator.pageSize = this.DEFAULT_PAGE_SIZE;
 
     if (this.route.data) {
       this.route.data.subscribe(({data}) => {
         this.dataSource = new MatTableDataSource(data.data);
-        this.dataSource.sort =  this.sort;
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
       }, ({error}) => {
-          console.log('An Exception was caught setting up material data table source. ' + error);
+        console.log('An Exception was caught setting up material data table source. ' + error);
       });
     }
   }
@@ -46,7 +52,11 @@ export class TaskListComponent implements OnInit {
 
   refreshGrid() {
     this.httpService.httpGet('tasks', null).subscribe((response) => {
-      this.dataSource = response.data;
+      this.dataSource = new MatTableDataSource(response.data);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+
+
     });
   }
 
@@ -93,8 +103,6 @@ export class TaskListComponent implements OnInit {
       }
     });
   }
-
-
 
 
   openSnackBar(message: string, action: string) {
