@@ -40,13 +40,16 @@ export class TaskListComponent implements OnInit {
 
   delete(task_id) {
     this.httpService.httpDelete('tasks', task_id).subscribe((response) => {
-      if (response.success) {
-        this.openSnackBar('Record was deleted..', 'Success');
-        this.refreshGrid();
-      } else {
-        this.openSnackBar('Record was not deleted..', 'Failure');
-      }
-    });
+        if (response.success) {
+            this.openSnackBar('Record was deleted..', 'Success');
+            this.refreshGrid();
+          } else {
+            this.openSnackBar('Record was not deleted..', 'Failure');
+          }
+    },
+      error => {
+        this.openSnackBar(error.compositeMessage, 'Failure');
+      });
   }
 
 
